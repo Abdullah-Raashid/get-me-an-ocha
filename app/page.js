@@ -7,7 +7,7 @@ export default function Home() {
         <div className="font-bold flex gap-2 text-5xl justify-center items-center">
           Buy me an Ocha
           <span>
-            <img src="\tea.gif" width={50} alt="" />
+            <img className="invertImg" src="\tea.gif" width={50} alt="" />
           </span>
         </div>
         <p>A crowdfunding platform for game developers. Start Now!</p>
@@ -29,9 +29,9 @@ export default function Home() {
       <div className="bg-white h-1 opacity-10"></div>
 
       <div className="text-white container mx-auto py-32">
-        <h1 className="text-3xl font-bold text-center pt-14 my-16">
+        <h2 className="text-3xl font-bold text-center pt-14 my-16">
           People can buy you an Ocha
-        </h1>
+        </h2>
         <div className="flex gap-5 justify-around">
           <div className="item space-y-3 flex flex-col items-center justify-center ">
             <img
@@ -80,7 +80,7 @@ export default function Home() {
       <div className="bg-white h-1 opacity-10"></div>
 
       <div className="text-white container mx-auto pt-14 py-32 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold text-center my-16">Embedding Test</h1>
+        <h2 className="text-3xl font-bold text-center my-16">Embedding Test</h2>
         <iframe
           width="560"
           height="315"

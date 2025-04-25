@@ -1,21 +1,26 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
   const { data: session } = useSession();
-  if (session) {
-    const router = useRouter();
-    router.push("/profile");
-  }
+  const router = useRouter();
+
+  useEffect(() => {
+    document.title = "Login - Get Me A Chai";
+    console.log(session);
+    if (session) {
+      router.push("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="text-white py-14 container mx-auto">
-      <h1 className="text-center font-bold text-3xl">
-        Login in or sign up for support
-      </h1>
-      <div className="flex flex-col gap-2 min-h-screen items-center p-10">
-        <button className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+      <h1 className="text-center font-bold text-3xl">Login to Get Started</h1>
+
+      <div className="flex flex-col gap-2 min-h-screen items-center  p-10">
+        <button className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg
             className="h-6 w-6 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +31,9 @@ const Login = () => {
             <g
               id="Icons"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g id="Color-" transform="translate(-401.000000, -860.000000)">
                 <g id="Google" transform="translate(401.000000, 860.000000)">
@@ -67,7 +72,7 @@ const Login = () => {
           <span>Continue with Google</span>
         </button>
 
-        <button className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        <button className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg
             className="h-6 w-6 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -78,9 +83,9 @@ const Login = () => {
             <g
               id="Icons"
               stroke="none"
-              stroke-width="1"
+              width="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g
                 id="Color-"
@@ -97,7 +102,7 @@ const Login = () => {
           <span>Continue with LinkedIn</span>
         </button>
 
-        <button className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        <button className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg
             className="h-6 w-6 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -108,9 +113,9 @@ const Login = () => {
             <g
               id="Icons"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g
                 id="Color-"
@@ -128,7 +133,7 @@ const Login = () => {
           <span>Continue with Twitter</span>
         </button>
 
-        <button className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        <button className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg
             className="h-6 w-6 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -139,9 +144,9 @@ const Login = () => {
             <g
               id="Icons"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g
                 id="Color-"
@@ -160,10 +165,10 @@ const Login = () => {
         </button>
 
         <button
-          className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           onClick={() => {
             signIn("github");
           }}
+          className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         >
           <svg
             className="h-6 w-6 mr-2"
@@ -175,19 +180,19 @@ const Login = () => {
             <g
               id="team-collaboration/version-control/github"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g
                 id="container"
                 transform="translate(2.000000, 2.000000)"
-                fill-rule="nonzero"
+                fillRule="nonzero"
               >
                 <rect
                   id="mask"
                   stroke="#000000"
-                  stroke-width="2"
+                  strokeWidth="2"
                   fill="#000000"
                   x="-1"
                   y="-1"
@@ -207,7 +212,7 @@ const Login = () => {
           <span>Continue with Github</span>
         </button>
 
-        <button className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        <button className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg
             className="h-6 w-6 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -218,9 +223,9 @@ const Login = () => {
             <g
               id="Page-1"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g
                 id="Dribbble-Light-Preview"

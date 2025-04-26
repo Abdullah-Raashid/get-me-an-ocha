@@ -7,17 +7,19 @@ import SessionWrapper from "@/components/SessionWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Get me an Ocha - Fund your Projects with Ocha",
-  description: "Crowd funding Website",
+  title: "Get me A Chai - Fund your projects with chai",
+  description: "This website is a crowdfunding platform for creators.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)] text-white">
+      <body className="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-white">
         <SessionWrapper>
           <Navbar />
-          <div>{children}</div>
+          <div className=" min-h-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-white">
+            {children}
+          </div>
           <Footer />
         </SessionWrapper>
       </body>

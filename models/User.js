@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 const { Schema, model, models } = mongoose;
 
 const userSchema = new Schema({
-  name: String,
   email: {
     type: String,
     required: true,
     unique: true,
   },
+  name: { type: String },
   username: {
     type: String,
     required: true,
@@ -20,6 +20,8 @@ const userSchema = new Schema({
     type: String,
     default: "https://www.gravatar.com/avatar/",
   },
+  paypayid: { type: String },
+  paypaysecret: { type: String },
   createdate: {
     type: Date,
     default: Date.now,

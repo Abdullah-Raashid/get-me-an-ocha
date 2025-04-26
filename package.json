@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypayopa/paypayopa-sdk-node": "^2.1.0",
     "mongoose": "^8.13.2",
     "next": "^14.2.26",
     "next-auth": "^4.24.10",

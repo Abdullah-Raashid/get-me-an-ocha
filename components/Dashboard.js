@@ -23,16 +23,40 @@ const Dashboard = () => {
   }, []);
 
   const getData = async () => {
-    let u = await fetchuser(session.user.name);
-    setform(u);
+    const u = await fetchuser(session.user.name); // may be null
+    if (u) setform(u); // update only if a record exists
+    else
+      setform({
+        // safe defaults prevent crash
+        name: "",
+        email: session.user.email,
+        username: session.user.name, // fall back to GitHub handle
+        profilepic: "",
+        coverpic: "",
+        paypayid: "",
+        paypaysecret: "",
+      });
   };
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!session) router.push("/login");
+    else {
+      getData().finally(() => setLoading(false));
+    }
+  }, []);
+
+  if (loading) return <p>Loading…</p>;
 
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    let a = await updateProfile(e, session.user.name);
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    await updateProfile(fd, session.user.name);
     toast("Profile Updated", {
       position: "top-right",
       autoClose: 5000,
@@ -67,7 +91,7 @@ const Dashboard = () => {
           Welcome to your Dashboard
         </h1>
 
-        <form className="max-w-2xl mx-auto" action={handleSubmit}>
+        <form className="max-w-2xl mx-auto" onSubmit={handleSubmit}>
           <div className="my-2">
             <label
               htmlFor="name"
@@ -159,7 +183,7 @@ const Dashboard = () => {
               htmlFor="paypayid"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Paypay ID
+              Paypay Id
             </label>
             <input
               value={form.paypayid ? form.paypayid : ""}
